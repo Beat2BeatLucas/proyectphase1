@@ -5,18 +5,16 @@ export class Grilla {
     private background_color: string;
     private pathData: string;
 
-    constructor(width: number, height:number, svg: any, color: string, pathData: string){
+    constructor(width: number, height:number, svg: any, color: string){
         this.grid_width= width;
         this.grid_height= height;
         this.grid_svg= svg;
         this.background_color= color;
-        this.pathData=pathData;
     }
 
     public createGrid(){
         this.initSVG();
         this.drawGrid();
-        this.drawPath();
     }
 
     private initSVG(){
@@ -79,13 +77,13 @@ export class Grilla {
                     .attr('fill','url(#grid)');
     }
 
-    private drawPath(){
+    public drawPath(pathData: string){
         this.grid_svg.append('path')
             .attr('stroke','steelblue')
             .attr('fill','none')
             .attr('stroke-width',1)
             .attr('stroke-linejoin','round')
-            .attr('d', this.pathData);
+            .attr('d', pathData);
       }
     
 }

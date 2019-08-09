@@ -43,11 +43,13 @@ export class GraficoComponent implements OnInit {
     let pathData= lineGenerator(this.data);
     let pathData2= lineGenerator(this.data2);
 
-    var grilla1= new Grilla(50,100,this.svg,'beige',pathData);
-    this.svg= grilla1.createGrid();
+    var grilla1= new Grilla(50,100,this.svg,'beige');
+    grilla1.createGrid();
+    grilla1.drawPath(pathData);
 
-    var grilla2= new Grilla(50,100,this.svg2,'white',pathData2);
-    this.svg2= grilla2.createGrid();
+    var grilla2= new Grilla(50,100,this.svg2,'white');
+    grilla2.createGrid();
+    grilla2.drawPath(pathData2);
 
   }
 
