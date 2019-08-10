@@ -3,7 +3,6 @@ export class Grilla {
     private grid_width: number;
     private grid_svg: any;
     private background_color: string;
-    private pathData: string;
 
     constructor(width: number, height:number, svg: any, color: string){
         this.grid_width= width;
