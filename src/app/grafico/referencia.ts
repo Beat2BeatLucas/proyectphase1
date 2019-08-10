@@ -22,30 +22,43 @@ export class Referencia {
                      .attr('g');
     }
 
-    public drawRef(refs: string[]){
+    public drawRef(refs: string[], container_width: number, container_height:number){
+        var w_aux= container_width * (this.ref_width/100);
+        var h_aux= container_height * (this.ref_height/100);
         var num_elements= refs.length;
-        var segment_height= this.ref_height/(num_elements + 1);
-        var array_widths= [0, this.ref_width/3, this.ref_width/3, 2*this.ref_width/3,
-                            2*this.ref_width/3, this.ref_width];
-        var array_heights= [segment_height, segment_height, 0.25*segment_height,
-                            0.25*segment_height, segment_height, segment_height];
+        var segment_height= h_aux/(num_elements + 1);
+        var array_widths= [0, w_aux/3, w_aux/3, 2*w_aux/3,
+                            2*w_aux/3, w_aux];
+        var array_heights= [segment_height, segment_height, 0.5*segment_height,
+                            0.5*segment_height, segment_height, segment_height];
         var points;
-
-        var step= 0;
-        for(var i=0; i<=num_elements; i++){
+        
+        console.log(w_aux);
+        console.log(h_aux);
+        console.log(num_elements);
+        console.log(segment_height);
+        console.log(array_widths);
+        console.log(array_heights);
+        for(var i=0; i<num_elements; i++){
             
+            for(var k=0; k<array_widths.length; k++){
+                if(i > 0){
+                    array_heights[k] += segment_height;
+                } 
+            }
+
             points='';
-            for(var j=0; j<=array_widths.length; j++){
-                points += array_widths[j+step] + ',' + array_heights[j+step] + ' ';
+            for(var j=0; j<array_widths.length; j++){
+                points += array_widths[j] + ',' + array_heights[j] + ' ';
             }
             
+            console.log(points);
             this.ref_svg.append('polyline')
                 .attr('points',points)
                 .attr('fill','none')
                 .attr('stroke','black')
                 .attr('stroke-width',1);
                 
-            step += segment_height;
         }
     }
 }
