@@ -1,16 +1,16 @@
 import * as d3 from 'd3';
 
-export class Grilla {
-    private grid_height: number;
-    private grid_width: number;
-    private grid_svg: any;
+export class Chart {
+    private chart_height: number;
+    private chart_width: number;
+    private chart_svg: any;
     private background_color: string;
 
-    constructor(width: number, height:number, svg: any, color: string){
-        this.grid_width= width;
-        this.grid_height= height;
-        this.grid_svg= svg;
+    constructor(width: number, height:number, color: string){
+        this.chart_width= width;
+        this.chart_height= height;
         this.background_color= color;
+        this.chart_svg= d3.select('#container2').append('svg');
     }
 
     public createGrid(){
@@ -19,15 +19,15 @@ export class Grilla {
     }
 
     private initSVG(){
-        this.grid_svg.attr('width', this.grid_width + '%')
-                     .attr('height', this.grid_height + '%')
-                     .style('background-color',this.background_color)
-                     .attr('g');
+        this.chart_svg.attr('width', this.chart_width + '%')
+                      .attr('height', this.chart_height + '%')
+                      .style('background-color',this.background_color)
+                      .attr('g');
     }
 
     private drawGrid(){
-        var defs= this.grid_svg.append('defs');
-    
+        var defs= this.chart_svg.append('defs');
+        
         var pattern1= defs.append('pattern')
                     .attr('id','smallGrid')
                     .attr('width',5)
@@ -70,7 +70,7 @@ export class Grilla {
                     .attr('stroke-width',2.5)
                     .attr('d','M 125 0 L 0 0 0 125');
 
-        this.grid_svg.append('rect')
+        this.chart_svg.append('rect')
                     .attr('x', 0)
                     .attr('y', 0)
                     .attr('width','100%')
@@ -79,7 +79,7 @@ export class Grilla {
     }
 
     public drawPath(pathData: string){
-        this.grid_svg.append('path')
+        this.chart_svg.append('path')
             .attr('stroke','steelblue')
             .attr('fill','none')
             .attr('stroke-width',1)
