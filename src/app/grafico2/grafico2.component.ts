@@ -11,11 +11,7 @@ import { Chart } from './chart';
 export class Grafico2Component implements OnInit {
   private width: number;
   private height: number;
-  //private svg: any;
-  //private svg2: any;
-  //private svgRef1: any;
-  //private svgRef2: any;
-
+  
   data: any[]=[[0, 80],[30, 100],[50, 30],[100, 50],[200, 40],[300, 80],[350,120],[400,50]];
   data2: any[]=[[0, 180],[30, 200],[50, 130],[100, 150],[200, 140],[300, 180],[350,220],[400,150]];
 
@@ -26,6 +22,7 @@ export class Grafico2Component implements OnInit {
 
   ngOnInit() {
     this.initSvg();
+    this.drawGraph();
   }
 
   private initSvg(){
@@ -33,27 +30,28 @@ export class Grafico2Component implements OnInit {
       .style('margin-left',250 + 'px')
       .style('width', this.width + 'px')
       .style('height', this.height + 'px');
+  }
 
+  private drawGraph(){
     let lineGenerator= d3.line();
     let pathData= lineGenerator(this.data);
     let pathData2= lineGenerator(this.data2);
 
-    var referencia1= new Reference(5,100,'azure');
-    referencia1.createRef();
-    referencia1.drawRef(['DI','DII','DIII','aVr','aVl','aVf'], this.width, this.height);
+    var reference1= new Reference(5,100,'azure');
+    reference1.createRef();
+    reference1.drawRef(['DI','DII','DIII','aVr','aVl','aVf'], this.width, this.height);
 
     var chart1= new Chart(45,100,'beige');
     chart1.createGrid();
     chart1.drawPath(pathData);
 
-    var referencia2= new Reference(5,100,'mistyrose');
-    referencia2.createRef();
-    referencia2.drawRef(['v1','v2','v3','v4','v5','v6'], this.width, this.height);
+    var reference2= new Reference(5,100,'azure');
+    reference2.createRef();
+    reference2.drawRef(['v1','v2','v3','v4','v5','v6'], this.width, this.height);
 
-    var grilla2= new Chart(45,100,'white');
+    var grilla2= new Chart(45,100,'beige');
     grilla2.createGrid();
     grilla2.drawPath(pathData2);
-
   }
 
 }
