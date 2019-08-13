@@ -30,12 +30,12 @@ export class Signal {
     private amplitude_scale(){
         //Se encarga de escalar la señal en amplitud para graficarla
         //y puede devolverla escalada o no.
-        //Recibe como parámetro la señal y el factor de escala
+        //Recibe como parámetro la señal y el factor de escala en amplitud.
     }
 
     private temporal_scale(){
-        //Se encarga de esacalar los puntos en el tiempo.
-        //Recibe como parámetro la señal y el factor de escala
+        //Se encarga de escalar los puntos en el tiempo.
+        //Recibe como parámetro la señal y el factor de escala temporal.
     }
 
 

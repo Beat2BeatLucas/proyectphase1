@@ -52,7 +52,7 @@ export class Reference {
             this.ref_svg.append('polyline')
                 .attr('points',points)
                 .attr('fill','none')
-                .attr('stroke','black')
+                .attr('stroke','#A0CDF1')
                 .attr('stroke-width',1);
                 
         }

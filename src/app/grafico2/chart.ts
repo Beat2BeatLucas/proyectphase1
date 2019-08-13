@@ -35,7 +35,7 @@ export class Chart {
                     .attr('patternUnits','userSpaceOnUse');
             pattern1.append('path')
                     .attr('fill','none')
-                    .attr('stroke','gray')
+                    .attr('stroke','#459BE1')
                     .attr('stroke-width',0.4)
                     .attr('d','M 5 0 L 0 0 0 5');
         
@@ -51,7 +51,7 @@ export class Chart {
                     .attr('fill','url(#smallGrid)');
             pattern2.append('path')
                     .attr('fill','none')
-                    .attr('stroke','gray')
+                    .attr('stroke','#459BE1')
                     .attr('stroke-width',1)
                     .attr('d','M 25 0 L 0 0 0 25');
     
@@ -66,7 +66,7 @@ export class Chart {
                     .attr('fill','url(#mediumGrid)');
             pattern3.append('path')
                     .attr('fill','none')
-                    .attr('stroke','gray')
+                    .attr('stroke','#459BE1')
                     .attr('stroke-width',2.5)
                     .attr('d','M 125 0 L 0 0 0 125');
 
@@ -80,7 +80,7 @@ export class Chart {
 
     public drawPath(pathData: string){
         this.chart_svg.append('path')
-            .attr('stroke','steelblue')
+            .attr('stroke','#A0CDF1')
             .attr('fill','none')
             .attr('stroke-width',1)
             .attr('stroke-linejoin','round')

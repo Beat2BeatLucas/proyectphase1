@@ -37,21 +37,24 @@ export class Grafico2Component implements OnInit {
     let pathData= lineGenerator(this.data);
     let pathData2= lineGenerator(this.data2);
 
-    var reference1= new Reference(5,100,'azure');
+    var reference1= new Reference(5,100,'#2B4791');
     reference1.createRef();
     reference1.drawRef(['DI','DII','DIII','aVr','aVl','aVf'], this.width, this.height);
 
-    var chart1= new Chart(45,100,'beige');
+    var chart1= new Chart(45,100,'#2B4791');
     chart1.createGrid();
     chart1.drawPath(pathData);
 
-    var reference2= new Reference(5,100,'azure');
+    var reference2= new Reference(5,100,'#2B4791');
     reference2.createRef();
     reference2.drawRef(['v1','v2','v3','v4','v5','v6'], this.width, this.height);
 
-    var grilla2= new Chart(45,100,'beige');
+    var grilla2= new Chart(45,100,'#2B4791');
     grilla2.createGrid();
     grilla2.drawPath(pathData2);
   }
 
+  //background: #2B4791
+  //grid: #459BE1
+  //path: #A0CDF1
 }
