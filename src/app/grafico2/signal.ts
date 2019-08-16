@@ -5,23 +5,24 @@ export class Signal {
     private avr_signal: number[];
     private avl_signal: number[];
     private avf_signal: number[];
-    private v1: number[];
-    private v2: number[];
-    private v3: number[];
-    private v4: number[];
-    private v5: number[];
-    private v6: number[];
+    private v1_signal: number[];
+    private v2_signal: number[];
+    private v3_signal: number[];
+    private v4_signal: number[];
+    private v5_signal: number[];
+    private v6_signal: number[];
 
     constructor(){}
 
-    public set_derivations(){
-        //Recibe como paremetro el fichero txt y
+    public set_derivations(data: string){
+        //Recibe como paremetro un string que almacena la
+        //información del fichero de texto.
         //setea los atributos de clase.
     }
 
     public get_derivation(){ 
         //Recibe como parámetros:
-        //   * Senal a recuperar
+        //   * Señal a recuperar
         //   * Escalamiento en amplitud
         //   * Escalamiento en tiempo
         //   * Devuelve la señal transformada o no

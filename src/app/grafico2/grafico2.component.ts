@@ -15,14 +15,54 @@ export class Grafico2Component implements OnInit {
   data: any[]=[[0, 80],[30, 100],[50, 30],[100, 50],[200, 40],[300, 80],[350,120],[400,50]];
   data2: any[]=[[0, 180],[30, 200],[50, 130],[100, 150],[200, 140],[300, 180],[350,220],[400,150]];
 
+  
+
   constructor() { 
     this.width= 1002;
     this.height= 502;
   }
 
   ngOnInit() {
+    this.loadFile();
     this.initSvg();
     this.drawGraph();
+  }
+
+  private loadFile(){
+    //Read the file and store it in a string variable
+    function readFile(event){
+      let file= event.target.files[0];
+      let reader= new FileReader();
+      reader.onload= (e) =>{
+        let text=reader.result;
+        text= text.toString();
+        //tabulations between numbers are remplaced by commas
+        let data= text.replace(/[\t]+/g,',');
+        console.log(data);
+      }
+      reader.readAsText(file);
+    }
+
+    document.getElementById('file-input').addEventListener('change',readFile,false);
+
+   /*
+    let cadena= 'Marca Modelo Color Año\n' + 
+                'Ford Escort Negro 1993\n' +
+                'Renault Clio Azul 2011\n';
+    //let res=d3.csvParse(cadena);
+    //console.log(res[1]);
+    let res=d3.csvParseRows(cadena);
+    console.log(res);
+    console.log(res.length);  //número de filas
+    console.log(res[0].length); //número de columnas
+    console.log(res[0][0]);
+    let str="hola que tal";
+    console.log(str.split(' '));
+    */
+
+  
+
+      
   }
 
   private initSvg(){
