@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { Reference } from './reference';
 import { Chart } from './chart';
+import { Signal } from './signal';
 
 @Component({
   selector: 'app-grafico2',
@@ -11,6 +12,7 @@ import { Chart } from './chart';
 export class Grafico2Component implements OnInit {
   private width: number;
   private height: number;
+  private signal: Signal;
   
   data: any[]=[[0, 80],[30, 100],[50, 30],[100, 50],[200, 40],[300, 80],[350,120],[400,50]];
   data2: any[]=[[0, 180],[30, 200],[50, 130],[100, 150],[200, 140],[300, 180],[350,220],[400,150]];
@@ -38,7 +40,8 @@ export class Grafico2Component implements OnInit {
         text= text.toString();
         //tabulations between numbers are remplaced by commas
         let data= text.replace(/[\t]+/g,',');
-        console.log(data);
+        this.signal= new Signal();
+        this.signal.set_derivations(data);
       }
       reader.readAsText(file);
     }
@@ -92,6 +95,7 @@ export class Grafico2Component implements OnInit {
     var grilla2= new Chart(45,100,'#2B4791');
     grilla2.createGrid();
     grilla2.drawPath(pathData2);
+
   }
 
   //background: #2B4791
