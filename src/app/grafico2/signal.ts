@@ -21,12 +21,9 @@ export class Signal {
     public set_derivations(data: string){
         /*Recibe como parametro un string que almacena la información 
         del fichero de texto y setea los atributos de clase.*/
-        //console.log(data);
         let res=d3.csvParseRows(data);
-        //console.log(res);
         this.rows= res.length;          //número de filas
         this.columns= res[0].length;    //número de columnas
-        //console.log(res[0][0]);
         let time=[];
         let DI=[];
         let DII=[];
@@ -56,7 +53,6 @@ export class Signal {
             v5[i]=parseFloat(res[i][11]);
             v6[i]=parseFloat(res[i][12]);
         }
-        console.log(DI);
 
         //Se declara cada señal (atributo de clase) como una matriz de n filas x 2 columnas,
         //es decir, cada fila corresponderá a una coordenada a graficar (tiempo,amplitud).
@@ -126,6 +122,17 @@ export class Signal {
         //   * Escalamiento en amplitud
         //   * Escalamiento en tiempo
         //   * Devuelve la señal transformada o no
+
+        /** Prueba graficación señal*/
+        let copia_d2=this.d2_signal.slice();
+        
+        for(let i=0; i<copia_d2.length; i++){
+            copia_d2[i][0]= 125*copia_d2[i][0];
+            copia_d2[i][1]= -50*copia_d2[i][1] +250;
+        }
+
+        return copia_d2;
+        /************************** */
     }
 
     private amplitude_scale(){

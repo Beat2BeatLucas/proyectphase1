@@ -80,6 +80,7 @@ export class Chart {
 
     public drawPath(pathData: string){
         this.chart_svg.append('path')
+            .attr('class','ecgsignal')
             .attr('stroke','#A0CDF1')
             .attr('fill','none')
             .attr('stroke-width',1)

@@ -20,8 +20,8 @@ export class Grafico2Component implements OnInit {
   
 
   constructor() { 
-    this.width= 1002;
-    this.height= 502;
+    this.width= 1202;
+    this.height= 602;
   }
 
   ngOnInit() {
@@ -47,30 +47,13 @@ export class Grafico2Component implements OnInit {
     }
 
     document.getElementById('file-input').addEventListener('change',readFile,false);
-
-   /*
-    let cadena= 'Marca Modelo Color Año\n' + 
-                'Ford Escort Negro 1993\n' +
-                'Renault Clio Azul 2011\n';
-    //let res=d3.csvParse(cadena);
-    //console.log(res[1]);
-    let res=d3.csvParseRows(cadena);
-    console.log(res);
-    console.log(res.length);  //número de filas
-    console.log(res[0].length); //número de columnas
-    console.log(res[0][0]);
-    let str="hola que tal";
-    console.log(str.split(' '));
-    */
-
-  
-
-      
+   
   }
 
   private initSvg(){
     d3.select('#container2')
-      .style('margin-left',250 + 'px')
+      //.style('margin-left',250 + 'px')
+      .style('margin','0 auto')
       .style('width', this.width + 'px')
       .style('height', this.height + 'px');
   }
@@ -80,6 +63,7 @@ export class Grafico2Component implements OnInit {
     let pathData= lineGenerator(this.data);
     let pathData2= lineGenerator(this.data2);
 
+    
     var reference1= new Reference(5,100,'#2B4791');
     reference1.createRef();
     reference1.drawRef(['DI','DII','DIII','aVr','aVl','aVf'], this.width, this.height);
@@ -87,6 +71,7 @@ export class Grafico2Component implements OnInit {
     var chart1= new Chart(45,100,'#2B4791');
     chart1.createGrid();
     chart1.drawPath(pathData);
+    
 
     var reference2= new Reference(5,100,'#2B4791');
     reference2.createRef();
@@ -95,6 +80,26 @@ export class Grafico2Component implements OnInit {
     var grilla2= new Chart(45,100,'#2B4791');
     grilla2.createGrid();
     grilla2.drawPath(pathData2);
+
+    /************************************Prueba derivacion 1 ************************************/
+    function readFile(event){
+      let file= event.target.files[0];
+      let reader= new FileReader();
+      reader.onload= (e) =>{
+      
+      let path_derivacion2=lineGenerator(this.signal.get_derivation());
+      //console.log('clase controladora');
+      //console.log(this.signal.get_derivation());
+      d3.selectAll('.ecgsignal').remove();
+      chart1.drawPath(path_derivacion2);
+      //d3.selectAll('svg').remove(); //Limpiar por completo el contenido
+      //d3.selectAll('.ecgsig').remove(); //Limpiar los path dibujados sobre la/s grilla/s
+      }
+      reader.readAsText(file);
+    }
+
+    document.getElementById('file-input').addEventListener('change',readFile,false);
+    /***************************************************************************************** */
 
   }
 
